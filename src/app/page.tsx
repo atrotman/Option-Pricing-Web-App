@@ -215,10 +215,10 @@ export default function Home() {
     <main className="flex flex-col lg:flex-row min-h-screen p-8 bg-gray-100">
       <div className="absolute top-0 right-0 p-4 flex gap-4">
         <a href="https://github.com/atrotman" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
-          <FaGithub size={24} />
+          <FaGithub size={28} />
         </a>
         <a href="https://www.linkedin.com/in/adamtrotman/" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
-          <FaLinkedin size={24} />
+          <FaLinkedin size={28} />
         </a>
       </div>
       {/* Left Side: Inputs */}
