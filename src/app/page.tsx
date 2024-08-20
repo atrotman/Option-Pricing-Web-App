@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from 'next/dynamic';
 import { erf } from 'mathjs';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 // Dynamically import Plot with SSR disabled
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
@@ -212,22 +213,30 @@ export default function Home() {
 
   return (
     <main className="flex flex-col lg:flex-row min-h-screen p-8 bg-gray-100">
+      <div className="absolute top-0 right-0 p-4 flex gap-4">
+        <a href="https://github.com/atrotman" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
+          <FaGithub size={28} />
+        </a>
+        <a href="https://www.linkedin.com/in/adamtrotman/" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600">
+          <FaLinkedin size={28} />
+        </a>
+      </div>
       {/* Left Side: Inputs */}
-      <div className="w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4">Select Model</h2>
+      <div className="w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-md mt-1">
+        <h2 className="text-xl font-bold mb-4 text-black">Select Model</h2>
         <select
           value={model}
           onChange={(e) => setModel(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-lg text-black"
         >
           <option value="Black-Scholes">Black-Scholes</option>
           <option value="Binomial Tree">Binomial Tree</option>
         </select>
 
-        <h3 className="text-lg font-semibold mb-2">Input Parameters</h3>
+        <h3 className="text-lg font-semibold mb-2 text-black">Input Parameters</h3>
         {Object.entries(inputs).map(([key, value]) => (
           <div key={key} className="mb-4">
-            <label className="block text-gray-700 mb-1 text-sm">
+            <label className="block text-gray-700 mb-1 text-sm text-black">
               {inputLabels[key as keyof typeof inputs]}
             </label>
             <input
@@ -242,7 +251,7 @@ export default function Home() {
               }
               step={key === "N" ? "1" : "0.01"}
               disabled={model === "Black-Scholes" && key === "N"} // Disable input for N when Black-Scholes is selected
-              className={`w-full p-2 border border-gray-300 rounded-lg text-sm ${
+              className={`w-full p-2 border border-gray-300 rounded-lg text-sm text-black ${
                 model === "Black-Scholes" && key === "N" ? "bg-gray-200 cursor-not-allowed" : ""
               }`}
             />
@@ -252,14 +261,14 @@ export default function Home() {
 
       {/* Right Side: Outputs */}
       <div className="w-full lg:w-4/5 pl-0 lg:pl-8 flex flex-col">
-        <h2 className="text-2xl font-bold mb-4">{model} Option Pricing Heatmaps</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">{model} Option Pricing Heatmaps</h2>
 
         {/* Welcome message box */}
         <div className="p-4 bg-blue-100 text-blue-800 rounded-lg shadow-md mb-4">
           <p className="font-bold">
             Welcome! Explore how option prices move across different volatility levels and strike prices. 
             Black-Scholes and Binomial Tree models are currently available with Finite Differences and Heston’s 
-            Stochastic Volatility models coming soon.
+            Stochastic Volatility models coming soon. If you encounter any issues feel free to contact me at <a href="mailto:adam.trotman@queensu.ca" className="text-blue-800 underline">adam.trotman@queensu.ca</a>.
           </p>
         </div>
 
@@ -283,7 +292,7 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row gap-8 flex-wrap">
           <div className="flex-1 bg-white p-4 rounded-lg shadow-md w-full lg:max-w-full lg:max-h-full relative flex flex-col lg:flex-row overflow-x-auto">
             <div className="flex flex-col items-center w-full">
-              <h3 className="text-lg font-semibold mb-2 text-center">CALL</h3>
+              <h3 className="text-lg font-semibold mb-2 text-center text-black">CALL</h3>
               <Plot
                 data={[
                   {
@@ -325,7 +334,7 @@ export default function Home() {
           </div>
           <div className="flex-1 bg-white p-4 rounded-lg shadow-md w-full lg:max-w-full lg:max-h-full relative flex flex-col lg:flex-row overflow-x-auto">
             <div className="flex flex-col items-center w-full">
-              <h3 className="text-lg font-semibold mb-2 text-center">PUT</h3>
+              <h3 className="text-lg font-semibold mb-2 text-center text-black">PUT</h3>
               <Plot
                 data={[
                   {
