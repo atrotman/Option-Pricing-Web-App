@@ -266,9 +266,8 @@ export default function Home() {
         {/* Welcome message box */}
         <div className="p-4 bg-blue-100 text-blue-800 rounded-lg shadow-md mb-4">
           <p className="font-bold">
-            Welcome! Explore how option prices move across different volatility levels and strike prices. 
-            Black-Scholes and Binomial Tree models are currently available with Finite Differences and Heston’s 
-            Stochastic Volatility models coming soon. If you encounter any issues feel free to contact me at <a href="mailto:adam.trotman@queensu.ca" className="text-blue-800 underline">adam.trotman@queensu.ca</a>.
+            Welcome! Explore how option prices move across different volatility levels and strike prices in the Black-Scholes and Binomial Tree models. 
+            If you encounter any issues feel free to contact me at <a href="mailto:adam.trotman@queensu.ca" className="text-blue-800 underline">adam.trotman@queensu.ca</a>.
           </p>
         </div>
 
